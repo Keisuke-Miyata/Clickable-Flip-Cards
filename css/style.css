@@ -1,0 +1,211 @@
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.card {
+  width: 270px;
+  height: 250px;
+  margin: 1em;
+}
+.card .card-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.75, 0, 0.85, 1);
+}
+
+.checkbox {
+  display: none;
+}
+.checkbox:checked ~ .card-content {
+  transform: rotateY(180deg);
+}
+
+.front,
+.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center;
+  backface-visibility: hidden;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+.front .inner,
+.back .inner {
+  display: grid;
+  height: 100%;
+  padding: 0.5em;
+  box-sizing: border-box;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  justify-content: center;
+  place-items: center;
+  transform: translateZ(80px) scale(0.94);
+}
+
+.front {
+  transition: transform 0.5s ease;
+}
+.front::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 200, 255, 0.3) 0%, rgba(0, 255, 128, 0.3) 50%, rgba(255, 220, 0, 0.3) 100%);
+}
+.front h2 {
+  grid-row: 1;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #fff;
+}
+.front .button {
+  grid-row: 5;
+}
+.front:hover {
+  transform: scale(1.02);
+}
+
+.back {
+  background-color: rgba(0, 123, 255, 0.1);
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  border: 1px solid;
+  font-family: "Inter", sans-serif;
+}
+.back .inner {
+  grid-template-rows: 0.5fr 1fr 1.5fr 3fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+}
+.back .inner .price {
+  grid-row: 1;
+  grid-column: 2/-1;
+  font-size: 0.7rem;
+  font-weight: 600;
+  justify-self: end;
+  align-self: start;
+}
+.back .inner .basic-info {
+  grid-row: 2;
+  grid-column: 1/-1;
+}
+.back .inner .basic-info span {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 900;
+  text-align: center;
+}
+.back .inner .description {
+  grid-row: 4;
+  grid-column: 1/-1;
+  font-size: 0.8em;
+  overflow: auto;
+  max-height: 100%;
+  text-indent: 1em;
+}
+.back .inner .features {
+  grid-row: 3;
+  grid-column: 1/-1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+  font-size: 0.6rem;
+}
+.back .inner .features span {
+  align-items: center;
+  background-color: rgba(0, 123, 255, 0.2);
+  border: 1px solid rgba(0, 123, 255, 0.5);
+  border-radius: 16px;
+  box-sizing: border-box;
+  color: gray;
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  justify-content: center;
+  line-height: 0;
+  max-width: 48%;
+  padding: 4px 0px;
+  text-decoration: none;
+  transition: all 0.2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 48%;
+  align-items: center;
+  text-align: center;
+  min-height: 1.5em;
+}
+.back .inner .features span span:active,
+.back .inner .features span span:hover {
+  outline: 0;
+}
+.back .inner .features span span:hover {
+  background-color: #FFFFFF;
+  border-color: rgba(0, 0, 0, 0.19);
+}
+.back .inner .button {
+  grid-row: 5;
+  grid-column: 1/-1;
+  justify-content: center;
+}
+
+.button {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-family: "JetBrains Mono", monospace;
+  height: 24px;
+  width: 96px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+}
+.button.back-button {
+  width: 120px;
+  height: 30px;
+  line-height: 1.5;
+}
+
+.button:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.button:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+/*# sourceMappingURL=style.css.map */
