@@ -5,9 +5,9 @@
 }
 
 .card {
-  width: 270px;
+  min-width: 280px;
   height: 250px;
-  margin: 1em;
+  margin: 4em;
 }
 .card .card-content {
   position: relative;
@@ -42,7 +42,7 @@
   height: 100%;
   padding: 0.5em;
   box-sizing: border-box;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 0.7fr;
   justify-content: center;
   place-items: center;
   transform: translateZ(80px) scale(0.94);
@@ -116,14 +116,14 @@
   grid-column: 1/-1;
   display: flex;
   flex-wrap: wrap;
-  gap: 1px;
+  gap: 2px;
   font-size: 0.6rem;
 }
 .back .inner .features span {
   align-items: center;
   background-color: rgba(0, 123, 255, 0.2);
   border: 1px solid rgba(0, 123, 255, 0.5);
-  border-radius: 16px;
+  border-radius: 8px;
   box-sizing: border-box;
   color: gray;
   display: flex;
